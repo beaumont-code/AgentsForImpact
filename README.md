@@ -222,6 +222,28 @@ In normal mode, speak naturally. Say **"exit"** or **"quit"** to stop.
 
 ---
 
+## Performance
+
+Latency measured from 35 debug sessions in `--vision-only --no-riva` mode:
+
+| Stage | Min | Typical | Max |
+|---|---|---|---|
+| Vision (Llama 3.2 90B) | 0.7s | 2–5s | 17.2s |
+| Nemotron (120B)* | 0.8s | 1–3s | 15.2s |
+| TTS (pyttsx3 fallback) | <0.1s | <0.1s | <0.1s |
+| **Total (with Nemotron)** | 2.5s | 4–8s | 21.4s |
+| **Total (vision-only)** | 0.7s | 2–5s | 17.2s |
+
+*Nemotron was later bypassed in continuous mode to reduce latency.
+
+**Notes:**
+- Riva ASR/TTS latency could not be measured (service was unavailable during testing)
+- Frame-diff gating (MSE) skips ~80% of unchanged frames, avoiding API calls
+- Text-diff gating (word similarity) skips ~95% of redundant descriptions
+- Vision API latency varies with scene complexity
+
+---
+
 ## Project Structure
 
 ```

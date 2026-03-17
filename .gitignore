@@ -130,11 +130,6 @@ Makefile
 
 .idea/
 *.iml
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 *.swp
 *.swo
 *.swn
@@ -159,3 +154,7 @@ Makefile
 *.mp3
 *.aiff
 *.m4a
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
+branch_structure.json
